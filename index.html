@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REBOOT - Lista d'Istituto ITI Lucarelli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0f1d',
+                            card: '#131b2e',
+                            border: '#1e293b',
+                            blue: '#0066ff',
+                            cyan: '#00f0ff',
+                            accent: '#2563eb',
+                            hover: '#1d4ed8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0f1d;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(0, 102, 255, 0.3);
+        }
+
+        .glow-effect-lg {
+            box-shadow: 0 0 50px -10px rgba(0, 240, 255, 0.25);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 20%, #00f0ff 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #00f0ff 0%, #0066ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 240, 255, 0.12) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .tab-active {
+            color: #00f0ff;
+            border-bottom: 2px solid #00f0ff;
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 12px 30px -10px rgba(0, 102, 255, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Brand -->
+                <a href="#home" onclick="switchTab('home')" class="flex items-center space-x-3 group cursor-pointer">
+                    <img src="logo.png" alt="REBOOT Logo" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/120x120/0066ff/ffffff?text=REBOOT'">
+                    <div class="flex flex-col">
+                        <span class="font-black text-xl tracking-wider text-white flex items-center gap-1">
+                            REB<span class="text-cyan-400">⏻</span>OT
+                        </span>
+                        <span class="text-[10px] tracking-widest text-slate-400 font-semibold uppercase">ITI Lucarelli</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-house mr-2 text-xs"></i>Home
+                    </button>
+                    <button onclick="switchTab('programma')" id="nav-programma" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-list-check mr-2 text-xs"></i>Programma
+                    </button>
+                    <button onclick="switchTab('convenzioni')" id="nav-convenzioni" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-handshake mr-2 text-xs"></i>Convenzioni & Partner
+                    </button>
+                    <button onclick="switchTab('bacheca')" id="nav-bacheca" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-box-archive mr-2 text-xs"></i>Bacheca Idee
+                    </button>
+                    <button onclick="switchTab('contatti')" id="nav-contatti" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-comments mr-2 text-xs"></i>Contatti & Social
+                    </button>
+                </nav>
+
+                <!-- Action CTA -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <a href="https://instagram.com/reboot.lucarelli" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-lg transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-instagram text-base"></i>
+                        <span>@reboot.lucarelli</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 pt-3 pb-6 space-y-2">
+            <button onclick="switchTab('home')" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-3">
+                <i class="fa-solid fa-house text-cyan-400"></i> Home
+            </button>
+            <button onclick="switchTab('programma')" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-3">
+                <i class="fa-solid fa-list-check text-cyan-400"></i> Programma
+            </button>
+            <button onclick="switchTab('convenzioni')" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-3">
+                <i class="fa-solid fa-handshake text-cyan-400"></i> Convenzioni & Partner
+            </button>
+            <button onclick="switchTab('bacheca')" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-3">
+                <i class="fa-solid fa-box-archive text-cyan-400"></i> Bacheca Idee
+            </button>
+            <button onclick="switchTab('contatti')" class="mobile-nav-btn w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-3">
+                <i class="fa-solid fa-comments text-cyan-400"></i> Contatti & Social
+            </button>
+            <div class="pt-2">
+                <a href="https://instagram.com/reboot.lucarelli" target="_blank" rel="noopener noreferrer" class="w-full justify-center px-4 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    <span>Seguici su Instagram</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        
+        <section id="section-home" class="page-section">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden bg-grid-pattern py-16 lg:py-24 border-b border-slate-800/50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Left Content -->
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-cyan-500/30 text-cyan-400 text-xs font-bold tracking-widest uppercase shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                Lista d'Istituto • ITI Lucarelli
+                            </div>
+                            
+                            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                                <span class="text-white">Ripartiamo.</span><br>
+                                <span class="text-gradient-brand">Insieme. Avanti.</span>
+                            </h1>
+
+                            <p class="text-slate-300 text-lg sm:text-xl max-w-2xl font-light leading-relaxed">
+                                Dalle parole ai fatti. La <strong class="text-cyan-400 font-semibold">Lista d'Istituto REBOOT</strong> nasce per trasformare l'ITI Lucarelli in una scuola moderna, partecipativa e ricca di opportunità reali per tutti gli studenti.
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                                <button onclick="switchTab('programma')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white shadow-lg glow-effect transition-all flex items-center justify-center gap-2 text-base">
+                                    <span>Esplora il Programma</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <button onclick="switchTab('convenzioni')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold glass-panel hover:bg-slate-800 text-slate-200 border-slate-700 transition-all flex items-center justify-center gap-2 text-base">
+                                    <i class="fa-solid fa-tags text-cyan-400"></i>
+                                    <span>Vedi Convenzioni</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Logo Showcase -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div class="relative group">
+                                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 to-cyan-400 opacity-40 blur-xl group-hover:opacity-75 transition duration-500"></div>
+                                <div class="relative glass-panel p-8 sm:p-12 rounded-3xl border border-slate-700/80 bg-brand-dark/90 flex flex-col items-center text-center">
+                                    <img src="logo.png" alt="REBOOT Logo" class="w-64 sm:w-80 h-auto object-contain drop-shadow-2xl mb-6 transform transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0066ff/ffffff?text=REBOOT+LOGO'">
+                                    <div class="text-xs text-slate-400 uppercase tracking-widest font-semibold border-t border-slate-800 pt-4 w-full">
+                                        RIPARTIAMO. INSIEME. AVANTI.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Principles -->
+            <div class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                        I Nostri Obiettivi
+                    </h2>
+                    <p class="mt-4 text-slate-400 text-lg">
+                        L'impegno concreto dei candidati della Lista d'Istituto REBOOT per l'ITI Lucarelli.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Ascolto Diretto</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm flex-grow">
+                            Gruppo WhatsApp ufficiale dell'ITI Lucarelli per aggiornamenti costanti e Bacheca delle Idee anonima gestita fisicamente dai rappresentanti d'istituto.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Vita Scolastica & Eventi</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm flex-grow">
+                            Lucarelli League, Cineforum, Annuario Scolastico e collaborazione con partner come @outsider_school e @invibeviaggievento per gite ed eventi indimenticabili.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
+                        <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Sconti & Tessera Studente</h3>
+                        <p class="text-slate-400 leading-relaxed text-sm flex-grow">
+                            Tessera dello Studente fornita direttamente dai futuri rappresentanti eletti per usufruire delle convenzioni nei migliori locali e attività commerciali.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-programma" class="page-section hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Lista d'Istituto REBOOT</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Programma d'Istituto</h2>
+                    <p class="mt-4 text-slate-400 text-lg">
+                        Tutti i punti del nostro programma per rinnovare l'esperienza scolastica all'ITI Lucarelli.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Point 1 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center text-lg border border-green-500/30">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Comunicazione</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Gruppo WhatsApp ITI Lucarelli</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Un canale d'informazione diretto e trasparente gestito dai rappresentanti d'istituto per aggiornamenti immediati, sondaggi e comunicazioni scolastiche.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-lg border border-yellow-500/30">
+                                    <i class="fa-solid fa-box-archive"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Partecipazione</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Bacheca delle Idee Anonima</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Una bacheca fisica posizionata a scuola dove raccogliere proposte e segnalazioni scritte dagli studenti in totale anonimato.
+                            </p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-400">
+                            <i class="fa-solid fa-user-check text-cyan-400 mr-1"></i> Progetto realizzato dai rappresentanti d'istituto eletti.
+                        </div>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg border border-blue-500/30">
+                                    <i class="fa-solid fa-book"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Cultura & Studio</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Rinascita della Biblioteca</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Valorizzazione e apertura della biblioteca come spazio di studio pomeridiano, luogo di incontro e consultazione con un registro prestiti efficiente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 4 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center text-lg border border-orange-500/30">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Sport</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Lucarelli League</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Tornei d'istituto di Calcio a 5, Pallavolo, Basket e Scacchi tra classi per promuovere il valore dello sport e dello spirito di squadra.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 5 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
+                                    <i class="fa-solid fa-film"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Cinema</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Cineforum Mensile</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Proiezioni di film e documentari votati dagli studenti dell'ITI Lucarelli, con dibattiti su tematiche sociali e culturali attuali.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 6 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg border border-pink-500/30">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Benessere & Diritti</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Iniziativa Quota Rosa</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Fornitura garantita e gratuita di prodotti igienici e assorbenti nei bagni dell'istituto per far fronte a ogni necessità.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 7 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg border border-cyan-500/30">
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Ricordi</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Annuario Scolastico</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Realizzazione dell'Annuario dell'ITI Lucarelli con photoshoots dedicati a ciascuna classe e momenti salienti dell'anno.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 8 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
+                                    <i class="fa-solid fa-recycle"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Sostenibilità</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Mercatino del Baratto & Cogestione</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Scambio gratuito di libri, vestiti e oggetti durante la cogestione natalizia, unita alla Settimana della Moda a tema.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Point 9 -->
+                    <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center text-lg border border-red-500/30">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Festa Finale</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Pranzo Sociale di Fine Anno</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Grande festa all'aperto di fine anno con pranzo sociale, musica DJ e tradizionali gavettoni per salutare l'anno insieme.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="section-convenzioni" class="page-section hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Vantaggi Esclusivi</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Convenzioni & Partner</h2>
+                    <p class="mt-4 text-slate-400 text-lg">
+                        Tutte le attività commerciali convenzionate con la Lista d'Istituto Reboot. Clicca sui link per visitare direttamente i loro profili Instagram!
+                    </p>
+                </div>
+
+                <!-- TESSERA STUDENTI INFO CARD -->
+                <div class="glass-panel rounded-3xl p-8 mb-16 border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-900 relative overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8 space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold uppercase">
+                                <i class="fa-solid fa-id-card"></i> Progetto dei Rappresentanti d'Istituto
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Tessera dello Studente Reboot</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                La <strong>Tessera dello Studente Reboot</strong> verrà realizzata, stampata e distribuita direttamente a ciascuno studente dai rappresentanti d'istituto che usciranno eletti dalle votazioni. Presentandola presso i partner ufficiali potrai accedere a tutti gli sconti concordati!
+                            </p>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center">
+                            <div class="w-full max-w-xs p-5 rounded-2xl bg-gradient-to-br from-blue-900 to-slate-900 border border-cyan-400/40 shadow-xl flex flex-col justify-between h-44 relative overflow-hidden">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="text-xs text-slate-400 uppercase font-semibold">Tessera Studente</div>
+                                        <div class="text-lg font-black text-white">REBOOT</div>
+                                    </div>
+                                    <i class="fa-solid fa-address-card text-2xl text-cyan-400"></i>
+                                </div>
+                                <div class="text-xs text-slate-400">
+                                    <p class="font-bold text-white">ITI Lucarelli</p>
+                                    <p>Distribuita dai rappresentanti d'istituto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PARTNERS GRID WITH INSTAGRAM LINKS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- Partner 1: Outsider School -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold">Merchandising</span>
+                                <i class="fa-solid fa-shirt text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Outsider School</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Partnership per la produzione del merchandising ufficiale e contest grafico aperto a tutti gli studenti.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/outsider_school" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@outsider_school</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 2: InVibe Viaggi & Eventi -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold">Viaggi & Eventi</span>
+                                <i class="fa-solid fa-plane text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">InVibe Viaggi Evento</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Collaborazione per gite scolastiche, viaggi d'istruzione ed eventi ricreativi dedicati.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/invibeviaggievento" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@invibeviaggievento</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 3: La Bottega di Gino -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold">Gastronomia</span>
+                                <i class="fa-solid fa-burger text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">La Bottega di Gino</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Sconti e menù speciali pensati per la pausa ricreazione e per i rientri degli studenti dell'ITI Lucarelli.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/labottegadigino" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@labottegadigino</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 4: Non Solo Vino Benevento -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-red-500/20 text-red-300 text-xs font-bold">Ristorazione</span>
+                                <i class="fa-solid fa-utensils text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Non Solo Vino</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Prezzi agevolati e convenzioni per aperitivi analcolici e incontri tra studenti.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/nonsolovino_benevento" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@nonsolovino_benevento</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 5: Pasticceria Zeolla -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-pink-500/20 text-pink-300 text-xs font-bold">Pasticceria</span>
+                                <i class="fa-solid fa-cake-candles text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Pasticceria Zeolla</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Promozioni per la colazione pre-scuola con cornetti caldi e prodotti di pasticceria artigianale.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/pasticceria_zeolla" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@pasticceria_zeolla</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 6: Orsini Caffè Benevento -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-amber-600/20 text-amber-300 text-xs font-bold">Caffetteria</span>
+                                <i class="fa-solid fa-mug-hot text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Orsini Caffè</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Tariffa riservata agli studenti per caffetteria, bevande e snack veloci.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/orsini.caffe.benevento" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@orsini.caffe.benevento</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 7: Libreria Masone Alisei -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold">Libreria</span>
+                                <i class="fa-solid fa-book-open text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Libreria Masone Alisei</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Sconto su articoli da disegno tecnico, articoli da cancelleria e libri di lettura.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/libreria.masone.alisei" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@libreria.masone.alisei</span>
+                        </a>
+                    </div>
+
+                    <!-- Partner 8: Panificio Garofano -->
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-orange-500/20 text-orange-300 text-xs font-bold">Panificio</span>
+                                <i class="fa-solid fa-bread-slice text-slate-500"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Panificio Garofano</h4>
+                            <p class="text-slate-400 text-xs mt-2 mb-4">
+                                Pizzette, panini e focacce appena sfornate con tariffe scolastiche dedicate.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/panificiogarofano" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                            <span>@panificiogarofano</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="section-bacheca" class="page-section hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Punto del Programma</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Bacheca delle Idee Anonima</h2>
+                    <p class="mt-4 text-slate-400 text-lg">
+                        Un impegno preciso che i futuri rappresentanti d'istituto di Reboot porteranno avanti a scuola.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-4 flex justify-center">
+                            <div class="w-32 h-32 rounded-3xl bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-5xl border border-yellow-500/40 glow-effect">
+                                <i class="fa-solid fa-box-archive"></i>
+                            </div>
+                        </div>
+                        <div class="md:col-span-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-white">Come funzionerà all'ITI Lucarelli?</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                I rappresentanti d'istituto installaranno una **Bacheca delle Idee** fisica nei corridoi dell'ITI Lucarelli. Ogni studente potrà inserire biglietti anonimi con consigli, problemi riscontrati nelle classi o idee per nuovi progetti.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                I rappresentanti si impegneranno periodicamente a svuotare la bacheca, analizzare le richieste e portarle nei consigli d'istituto per trasformarle in realtà!
+                            </p>
+                            <div class="pt-2">
+                                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-cyan-400 text-xs font-bold">
+                                    <i class="fa-solid fa-shield-halved"></i> Garanzia di totale anonimato per tutti gli studenti
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="section-contatti" class="page-section hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Rimani Aggiornato</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Canali Social Ufficiali</h2>
+                    <p class="mt-4 text-slate-400 text-lg">
+                        Segui la Lista d'Istituto REBOOT sui nostri canali ufficiali.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    
+                    <!-- Instagram Card -->
+                    <div class="glass-panel p-8 rounded-3xl border border-pink-500/30 flex flex-col items-center text-center space-y-6 glow-effect-lg">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-lg">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Instagram Ufficiale</h3>
+                            <p class="text-slate-400 text-sm mt-2">
+                                Storie, novità, presentazioni dei candidati ed eventi dell'ITI Lucarelli.
+                            </p>
+                        </div>
+                        <a href="https://instagram.com/reboot.lucarelli" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold transition-all shadow-md flex items-center justify-center gap-2">
+                            <span>@reboot.lucarelli</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- WhatsApp Card -->
+                    <div class="glass-panel p-8 rounded-3xl border border-green-500/30 flex flex-col items-center text-center space-y-6">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-green-600 to-emerald-400 flex items-center justify-center text-3xl text-white shadow-lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Gruppo WhatsApp</h3>
+                            <p class="text-slate-400 text-sm mt-2">
+                                Gestito direttamente dai rappresentanti per comunicazioni scolastiche urgenti e sondaggi.
+                            </p>
+                        </div>
+                        <div class="w-full py-3 px-6 rounded-xl bg-slate-800 text-green-400 font-bold border border-green-500/40 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Canale attivo post-elezioni</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 text-center glass-panel p-8 rounded-2xl max-w-4xl mx-auto border border-slate-800">
+                    <h4 class="text-xl font-bold text-white mb-2">Lista d'Istituto REBOOT • ITI Lucarelli</h4>
+                    <p class="text-slate-400 text-sm">
+                        Ripartiamo, insieme, avanti.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="glass-panel border-t border-slate-800 mt-20 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="REBOOT Logo" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0066ff/ffffff?text=REBOOT'">
+                <span class="text-sm font-bold text-slate-300">REBOOT • Lista d'Istituto ITI Lucarelli</span>
+            </div>
+            <p class="text-xs text-slate-500">
+                &copy; Lista d'Istituto REBOOT - "Ripartiamo, insieme, avanti."
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            const targetSection = document.getElementById('section-' + tabId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.add('tab-active');
+            }
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('home');
+        });
+    </script>
+</body>
+</html>
