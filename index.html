@@ -45,10 +45,10 @@
             overflow-x: hidden;
         }
 
-        /* Integrazione Logo Senza Sfondo Bianco */
+        /* Integrazione Logo JPEG Senza Sfondo Bianco */
         .brand-logo-img {
             mix-blend-mode: lighten;
-            filter: brightness(1.1) contrast(1.1);
+            filter: brightness(1.1) contrast(1.15);
         }
         
         .glow-effect {
@@ -97,7 +97,7 @@
                 <!-- Brand Logo & Title -->
                 <a href="#home" class="flex items-center space-x-3 group cursor-pointer">
                     <div class="bg-slate-900/80 p-1.5 rounded-xl border border-slate-800 flex items-center justify-center">
-                        <img src="logo.png" alt="REBOOT Logo" class="h-10 w-auto object-contain brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/120x120/0066ff/ffffff?text=REBOOT'">
+                        <img src="logo.jpeg" alt="REBOOT Logo" class="h-10 w-auto object-contain brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/120x120/0066ff/ffffff?text=REBOOT'">
                     </div>
                     <div class="flex flex-col">
                         <span class="font-black text-xl tracking-wider text-white">REBOOT</span>
@@ -105,7 +105,7 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Menu (Anchors) -->
+                <!-- Desktop Navigation Menu -->
                 <nav class="hidden md:flex items-center space-x-1">
                     <a href="#home" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/60 flex items-center gap-2">
                         <i class="fa-solid fa-house text-xs text-cyan-400"></i>Home
@@ -165,7 +165,6 @@
         
         <!-- SECTION 1: HERO & PILASTRI (HOME) -->
         <section id="home" class="scroll-mt-24">
-            <!-- Hero Banner -->
             <div class="relative overflow-hidden bg-grid-pattern py-16 lg:py-24 border-b border-slate-800/50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -203,7 +202,7 @@
                             <div class="relative group w-full max-w-md">
                                 <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 to-cyan-400 opacity-40 blur-xl group-hover:opacity-75 transition duration-500"></div>
                                 <div class="relative glass-panel p-8 sm:p-12 rounded-3xl border border-slate-700/80 bg-brand-dark/90 flex flex-col items-center text-center">
-                                    <img src="logo.png" alt="REBOOT Logo" class="w-64 sm:w-80 h-auto object-contain brand-logo-img drop-shadow-2xl mb-6 transform transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0066ff/ffffff?text=REBOOT+LOGO'">
+                                    <img src="logo.jpeg" alt="REBOOT Logo" class="w-64 sm:w-80 h-auto object-contain brand-logo-img drop-shadow-2xl mb-6 transform transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/400x400/0066ff/ffffff?text=REBOOT+LOGO'">
                                     <div class="text-xs text-cyan-400 uppercase tracking-widest font-bold border-t border-slate-800/80 pt-4 w-full">
                                         RIPARTIAMO. INSIEME. AVANTI.
                                     </div>
@@ -227,7 +226,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Feature 1 -->
                     <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
                         <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
                             <i class="fa-solid fa-bullhorn"></i>
@@ -238,7 +236,6 @@
                         </p>
                     </div>
 
-                    <!-- Feature 2 -->
                     <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
                         <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
                             <i class="fa-solid fa-trophy"></i>
@@ -249,7 +246,6 @@
                         </p>
                     </div>
 
-                    <!-- Feature 3 -->
                     <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col">
                         <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-500/30">
                             <i class="fa-solid fa-tags"></i>
@@ -266,7 +262,6 @@
         <!-- SECTION 2: PROGRAMMA COMPLETO -->
         <section id="programma" class="scroll-mt-24 pt-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Lista d'Istituto REBOOT</span>
                     <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Programma d'Istituto</h2>
@@ -276,8 +271,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <!-- Point 1 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -293,7 +286,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 2 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -309,7 +301,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 3 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -325,7 +316,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 4 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -341,7 +331,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 5 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -357,7 +346,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 6 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -373,7 +361,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 7 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -389,7 +376,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 8 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -405,7 +391,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 9 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -421,7 +406,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 10 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -437,7 +421,6 @@
                         </div>
                     </div>
 
-                    <!-- Point 11 -->
                     <div class="glass-panel rounded-2xl p-6 glass-panel-hover border border-slate-800 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center gap-3 mb-4">
@@ -452,7 +435,6 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -460,7 +442,6 @@
         <!-- SECTION 3: CONVENZIONI & PARTNER -->
         <section id="convenzioni" class="scroll-mt-24 pt-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">A fianco degli studenti</span>
                     <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Convenzioni & Partner</h2>
@@ -469,7 +450,6 @@
                     </p>
                 </div>
 
-                <!-- TESSERA STUDENTI EXPLANATION -->
                 <div class="glass-panel rounded-3xl p-8 mb-12 border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-900 relative overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                         <div class="md:col-span-8 space-y-4">
@@ -488,7 +468,7 @@
                                         <div class="text-[10px] text-slate-400 uppercase font-semibold">Tessera Ufficiale</div>
                                         <div class="text-lg font-black text-white tracking-wider">REBOOT</div>
                                     </div>
-                                    <img src="logo.png" alt="REBOOT Logo" class="h-8 w-auto object-contain brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0066ff/ffffff?text=REBOOT'">
+                                    <img src="logo.jpeg" alt="REBOOT Logo" class="h-8 w-auto object-contain brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0066ff/ffffff?text=REBOOT'">
                                 </div>
                                 <div class="text-xs text-slate-400">
                                     <p class="font-bold text-white">ITI Lucarelli</p>
@@ -499,10 +479,7 @@
                     </div>
                 </div>
 
-                <!-- PARTNERS INSTAGRAM GRID -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <!-- Partner 1: Outsider School -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -520,7 +497,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 2: InVibe Viaggi & Eventi -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -538,7 +514,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 3: La Bottega di Gino -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -556,7 +531,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 4: Non Solo Vino Benevento -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -574,7 +548,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 5: Pasticceria Zeolla -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -592,7 +565,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 6: Orsini Caffè Benevento -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -610,7 +582,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 7: Libreria Masone Alisei -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -628,7 +599,6 @@
                         </a>
                     </div>
 
-                    <!-- Partner 8: Panificio Garofano -->
                     <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between border border-slate-800">
                         <div>
                             <div class="flex justify-between items-center mb-4">
@@ -645,7 +615,6 @@
                             <span>@panificiogarofano</span>
                         </a>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -653,7 +622,6 @@
         <!-- SECTION 4: BACHECA IDEE & COMUNICAZIONE -->
         <section id="bacheca" class="scroll-mt-24 pt-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="text-cyan-400 font-bold uppercase tracking-widest text-xs">Punto d'Ascolto</span>
                     <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Bacheca Idee & Comunicazione</h2>
@@ -663,8 +631,6 @@
                 </div>
 
                 <div class="max-w-4xl mx-auto space-y-8">
-                    
-                    <!-- Bacheca Idee Card -->
                     <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-4 flex justify-center">
@@ -687,7 +653,6 @@
                         </div>
                     </div>
 
-                    <!-- Instagram Channel Box -->
                     <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-pink-500/30 bg-gradient-to-br from-slate-900 to-purple-950/30">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div class="md:col-span-8 space-y-4">
@@ -712,9 +677,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
 
@@ -724,7 +687,7 @@
     <footer class="glass-panel border-t border-slate-800 mt-20 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
-                <img src="logo.png" alt="REBOOT Logo" class="h-8 w-auto object-contain brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0066ff/ffffff?text=REBOOT'">
+                <img src="logo.jpeg" alt="REBOOT Logo" class="h-8 w-auto object-contain brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0066ff/ffffff?text=REBOOT'">
                 <span class="text-sm font-bold text-slate-300">REBOOT • Lista d'Istituto ITI Lucarelli</span>
             </div>
             <p class="text-xs text-slate-500">
